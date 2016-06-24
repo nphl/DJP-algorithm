@@ -1,2 +1,2 @@
 # DJP-algorithm
-This project is a visual representation of the DJP algorithm on the Java
+This project is a visual representation of the Dijkstra-Jarník-Prim algorithm on Java language
