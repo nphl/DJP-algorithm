@@ -7,9 +7,9 @@ public class GraphStruct {
 
     public int first;
     public int second;
-    public double weight;
+    public int weight;
 
-        public GraphStruct(int first, int second, double weight) {
+        public GraphStruct(int first, int second, int weight) {
             this.first = first;
             this.second = second;
             this.weight = weight;

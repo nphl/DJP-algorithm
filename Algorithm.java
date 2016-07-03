@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -22,19 +24,13 @@ public class Algorithm {
         }
     }
 
-    ;
-
     public int INF = Integer.MAX_VALUE / 2; // "Бесконечность"
-    public int[][] reDraw;
-
-    public int mstPrim(int[][] graph, int vNum) {
+    public int mstPrim(int[][] graph, int vNum, List<GraphStruct> toDraw) {
 
         boolean[] used = new boolean[vNum]; // массив пометок
         int[][] ddist = new int[vNum][3];
         for (int i = 0; i < vNum; i++) ddist[i][0] = 0;
         int[] dist = new int[vNum]; // массив расстояния. dist[v] = вес_ребра(MST, v)
-        reDraw = new int[vNum][vNum];
-        fill2(reDraw, vNum, 0);
         fill(dist, INF); // устанаавливаем расстояние до всех вершин INF
         dist[0] = 0; // для начальной вершины положим 0
         ddist[0][0] = 0;
@@ -58,9 +54,10 @@ public class Algorithm {
             }
 
         }
+
         for (int i = 1; i < vNum; i++) {
             if (ddist[i][0] == 0) break;
-            reDraw[ddist[i][1]][ddist[i][2]] = ddist[i][0];
+            toDraw.add(new GraphStruct(ddist[i][1]+1,ddist[i][2]+1,ddist[i][0]));
         }
         int ret = 0; // вес MST
         for (int v = 0; v < vNum; v++)
